@@ -14,7 +14,14 @@
 sed -i 's/192.168.1.1/192.168.1.2/g' package/base-files/files/bin/config_generate
 
 # OpenClash
-svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/lean/luci-app-openclash
+mkdir package/luci-app-openclash
+cd package/luci-app-openclash
+git init
+git remote add origin https://github.com/vernesong/OpenClash.git
+git config core.sparsecheckout true
+echo "luci-app-openclash" >> .git/info/sparse-checkout
+git pull --depth 1 origin master
+cd ../..
 
 # MosDNS
 # svn co https://github.com/QiuSimons/openwrt-mos/trunk/mosdns package/mosdns
