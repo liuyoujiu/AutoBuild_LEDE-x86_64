@@ -14,26 +14,30 @@
 sed -i 's/192.168.1.1/192.168.1.2/g' package/base-files/files/bin/config_generate
 
 # OpenClash
-mkdir package/luci-app-openclash
-cd package/luci-app-openclash
+mkdir package/OpenClash
+cd package/OpenClash
 git init
 git remote add origin https://github.com/vernesong/OpenClash.git
 git config core.sparsecheckout true
 echo "luci-app-openclash" >> .git/info/sparse-checkout
 git pull --depth 1 origin master
+mv luci-app-openclash ../
 cd ../..
+rm -rf package/OpenClash
 
 # MosDNS
-mkdir package/luci-app-mosdns
-cd package/luci-app-mosdns
+mkdir package/openwrt-mos
+cd package/openwrt-mos
 git init
 git remote add origin https://github.com/QiuSimons/openwrt-mos.git
 git config core.sparsecheckout true
 echo "luci-app-mosdns" >> .git/info/sparse-checkout
 echo "mosdns" >> .git/info/sparse-checkout
 git pull --depth 1 origin master
+mv luci-app-mosdns ../
 mv mosdns ../
 cd ../..
+rm -rf package/openwrt-mos
 
 # Argon
 rm -rf package/lean/luci-theme-argon
