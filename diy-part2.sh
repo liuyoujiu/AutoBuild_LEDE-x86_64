@@ -35,6 +35,7 @@ cd ../..
 rm -rf package/OpenClash
 
 # MosDNS
+<< EOF
 mkdir package/openwrt-mos
 cd package/openwrt-mos
 git init
@@ -47,4 +48,4 @@ mv luci-app-mosdns ../
 mv mosdns ../
 cd ../..
 rm -rf package/openwrt-mos
-
+EOF
