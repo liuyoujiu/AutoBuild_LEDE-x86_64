@@ -14,13 +14,13 @@
 sed -i 's/192.168.1.1/192.168.1.2/g' package/base-files/files/bin/config_generate
 
 # HelloWorld
-git clone https://github.com/jerrykuku/lua-maxminddb.git package/lean/lua-maxminddb
-git clone https://github.com/jerrykuku/luci-app-vssr.git package/lean/luci-app-vssr
+git clone -b master --single-branch --depth 1 https://github.com/jerrykuku/lua-maxminddb.git package/lean/lua-maxminddb
+git clone -b master --single-branch --depth 1 https://github.com/jerrykuku/luci-app-vssr.git package/lean/luci-app-vssr
 
 # Argon
 rm -rf package/lean/luci-theme-argon
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/lean/luci-theme-argon
-git clone https://github.com/jerrykuku/luci-app-argon-config.git package/lean/luci-app-argon-config
+git clone -b 18.06 --single-branch --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/lean/luci-theme-argon
+git clone -b master --single-branch --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/lean/luci-app-argon-config
 
 # OpenClash
 mkdir package/OpenClash
@@ -33,6 +33,7 @@ git pull --depth 1 origin master
 mv luci-app-openclash ../
 cd ../..
 rm -rf package/OpenClash
+
 
 # MosDNS
 << EOF
