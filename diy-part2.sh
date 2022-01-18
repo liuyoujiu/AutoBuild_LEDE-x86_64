@@ -13,16 +13,20 @@
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.1.2/g' package/base-files/files/bin/config_generate
 
+
 # HelloWorld
 git clone -b master --single-branch --depth 1 https://github.com/jerrykuku/lua-maxminddb.git package/lean/lua-maxminddb
 git clone -b master --single-branch --depth 1 https://github.com/jerrykuku/luci-app-vssr.git package/lean/luci-app-vssr
+
 
 # Argon
 rm -rf package/lean/luci-theme-argon
 git clone -b 18.06 --single-branch --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/lean/luci-theme-argon
 git clone -b master --single-branch --depth 1 https://github.com/jerrykuku/luci-app-argon-config.git package/lean/luci-app-argon-config
 
+
 # OpenClash
+<< EOF
 mkdir package/OpenClash
 cd package/OpenClash
 git init
@@ -33,20 +37,18 @@ git pull --depth 1 origin master
 mv luci-app-openclash ../
 cd ../..
 rm -rf package/OpenClash
+EOF
 
 
 # MosDNS
-<< EOF
 mkdir package/openwrt-mos
 cd package/openwrt-mos
 git init
 git remote add origin https://github.com/QiuSimons/openwrt-mos.git
 git config core.sparsecheckout true
 echo "luci-app-mosdns" >> .git/info/sparse-checkout
-echo "mosdns" >> .git/info/sparse-checkout
 git pull --depth 1 origin master
 mv luci-app-mosdns ../
-mv mosdns ../
 cd ../..
 rm -rf package/openwrt-mos
-EOF
+
