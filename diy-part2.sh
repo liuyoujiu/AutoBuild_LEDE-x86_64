@@ -41,14 +41,16 @@ EOF
 
 
 # MosDNS
+rm -rf package/feeds/packages/mosdns feeds/packages/net/mosdns
 mkdir package/openwrt-mos
 cd package/openwrt-mos
 git init
 git remote add origin https://github.com/QiuSimons/openwrt-mos.git
 git config core.sparsecheckout true
 echo "luci-app-mosdns" >> .git/info/sparse-checkout
+echo "mosdns" >> .git/info/sparse-checkout
 git pull --depth 1 origin master
 mv luci-app-mosdns ../
+mv mosdns ../
 cd ../..
 rm -rf package/openwrt-mos
-
