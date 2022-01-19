@@ -26,31 +26,4 @@ git clone -b master --single-branch --depth 1 https://github.com/jerrykuku/luci-
 
 
 # OpenClash
-<< EOF
-mkdir package/OpenClash
-cd package/OpenClash
-git init
-git remote add origin https://github.com/vernesong/OpenClash.git
-git config core.sparsecheckout true
-echo "luci-app-openclash" >> .git/info/sparse-checkout
-git pull --depth 1 origin master
-mv luci-app-openclash ../
-cd ../..
-rm -rf package/OpenClash
-EOF
-
-
-# MosDNS
-rm -rf package/feeds/packages/mosdns feeds/packages/net/mosdns
-mkdir package/openwrt-mos
-cd package/openwrt-mos
-git init
-git remote add origin https://github.com/QiuSimons/openwrt-mos.git
-git config core.sparsecheckout true
-echo "luci-app-mosdns" >> .git/info/sparse-checkout
-echo "mosdns" >> .git/info/sparse-checkout
-git pull --depth 1 origin master
-mv luci-app-mosdns ../
-mv mosdns ../
-cd ../..
-rm -rf package/openwrt-mos
+svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
